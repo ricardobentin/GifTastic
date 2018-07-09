@@ -14,12 +14,32 @@ $.get(queryURL).then(function (response) {
     var results = response.data;
     //create a for loop to loop through the entire array of results and do something with the resulting data
     for (var i = 0; i < results.length; i++) {
-        var gifDiv = $("<div>");
+        //create a div tag for each image with the title as an id
+        var gifDiv = $(`<div id="${results[i].title}">`);
+        //put the rating in paragraph tag under each gif
         var p = $("<p>").text("Rating: " + results[i].rating);
+
         var gifImage = $("<img>");
         gifImage.attr("src", results[i].images.fixed_height_still.url);
+        gifImage.attr("data-state", "still");
+        gifImage.attr("class", "gif");
+        gifImage.attr("data-animate", results[i].images.fixed_height.url);
+        gifImage.attr("data-still", results[i].images.fixed_height_still.url);
         gifDiv.append(p);
         gifDiv.append(gifImage);
         $("#gifs").prepend(gifDiv);
     }
+    $(".gif").on("click", function () {
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        }
+        else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+
+    });
 });
