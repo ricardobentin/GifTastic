@@ -13,7 +13,7 @@ var apiKey = "fAVHZ12EhkjdK8J608NSa4RAPhL0ADrt";
 var gifLimit = 10;
 createButton();
 //holy goodness event delegation worked!
-$("#buttons").on("click",".topics", function () {
+$("#buttons").on("click", ".topics", function () {
     $("#gifs").show();
     $("#gifs").empty();
     q = $(this).val();
@@ -29,9 +29,9 @@ $("#buttons").on("click",".topics", function () {
         //create a for loop to loop through the entire array of results and do something with the resulting data
         for (var i = 0; i < results.length; i++) {
             //create a div tag for each image with the title as an id
-            var gifDiv = $(`<div id="${results[i].title}">`);
+            var gifDiv = $(`<div id="${results[i].title}" class="gifContainer">`);
             //put the rating in paragraph tag under each gif
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            var p = $("<p>").html(`Title: ${results[i].title} <br> Rating: ${results[i].rating} <br> Published Date: ${results[i].import_datetime}`);
 
             var gifImage = $("<img>");
             gifImage.attr("src", results[i].images.fixed_height_still.url);
@@ -76,11 +76,18 @@ function createButton() {
 //logic to push a new value into the array
 $("#newMusicSubmit").on("click", function () {
     var newTopic = $("#newMusicInput").val();
-    topics.push(newTopic);
-    $("#newMusicInput").val("");
-    createButton();
-    console.log(topics);
-    event.preventDefault();
+    if (newTopic === "") {
+        alert("Please Type In a Value That Is Not Blank.")
+    }
+    else {
+        topics.push(newTopic);
+        $("#newMusicInput").val("");
+        createButton();
+        console.log(topics);
+        event.preventDefault();
+    }
+
+
 });
 
 console.log(topics);
