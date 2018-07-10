@@ -1,3 +1,4 @@
+$("#gifs").hide();
 //create an array of topics
 var topics = [
     "guitar",
@@ -13,6 +14,7 @@ var gifLimit = 10;
 createButton();
 //holy goodness event delegation worked!
 $("#buttons").on("click",".topics", function () {
+    $("#gifs").show();
     $("#gifs").empty();
     q = $(this).val();
     //query url is structured
