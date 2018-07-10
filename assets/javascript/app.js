@@ -37,8 +37,8 @@ $("#buttons").on("click",".topics", function () {
             gifImage.attr("class", "gif");
             gifImage.attr("data-animate", results[i].images.fixed_height.url);
             gifImage.attr("data-still", results[i].images.fixed_height_still.url);
-            gifDiv.append(p);
             gifDiv.append(gifImage);
+            gifDiv.append(p);
             $("#gifs").prepend(gifDiv);
         }
         //click function to animate gifs
@@ -75,11 +75,10 @@ function createButton() {
 $("#newMusicSubmit").on("click", function () {
     var newTopic = $("#newMusicInput").val();
     topics.push(newTopic);
-    // $("#buttons").html("");
+    $("#newMusicInput").val("");
     createButton();
     console.log(topics);
     event.preventDefault();
 });
-
 
 console.log(topics);
