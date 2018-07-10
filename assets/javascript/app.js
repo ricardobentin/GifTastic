@@ -3,22 +3,16 @@ var topics = [
     "guitar",
     "bass guitar",
     "drums",
-    "trumpet",
+    "trumpet"
 ]
 var q = "";
 //create variables to make the query URL dynamic
 var apiKey = "fAVHZ12EhkjdK8J608NSa4RAPhL0ADrt";
 //may give the user the ability to set the limit
 var gifLimit = 10;
-//logic to create buttons on the page
-for (var i = 0; i < topics.length; i++) {
-    var button = $(`<button>${topics[i]}</button>`)
-    button.attr("value", topics[i]);
-    button.attr("class", "topics");
-    $("#buttons").append(button);
-}
-console.log(topics);
-$(".topics").on("click", function () {
+createButton();
+//holy goodness event delegation worked!
+$("#buttons").on("click",".topics", function () {
     $("#gifs").empty();
     q = $(this).val();
     //query url is structured
@@ -66,3 +60,26 @@ $(".topics").on("click", function () {
 
 
 });
+//logic to create buttons on the page
+function createButton() {
+    $("#buttons").empty();
+    for (var j = 0; j < topics.length; j++) {
+        var button = $(`<button>${topics[j]}</button>`)
+        button.attr("value", topics[j]);
+        button.attr("class", "topics");
+        $("#buttons").append(button);
+    }
+};
+
+//logic to push a new value into the array
+$("#newMusicSubmit").on("click", function () {
+    var newTopic = $("#newMusicInput").val();
+    topics.push(newTopic);
+    // $("#buttons").html("");
+    createButton();
+    console.log(topics);
+    event.preventDefault();
+});
+
+
+console.log(topics);
