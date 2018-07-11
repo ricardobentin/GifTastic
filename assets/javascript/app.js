@@ -5,7 +5,10 @@ var topics = [
     "guitar",
     "bass guitar",
     "drums",
-    "trumpet"
+    "trumpet",
+    "keytar",
+    "dj",
+    "speakers"
 ]
 //create variables to make the query URL dynamic
 var q;

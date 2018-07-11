@@ -2,6 +2,7 @@ body{
     background-image: url("../images/background.jpg");
     margin-left: 20px;
     margin-right: 20px;
+    overflow: scroll;
 
 }
 
@@ -13,7 +14,6 @@ body{
     text-align: center;
     margin-left: 0;
     margin-right: auto;
-  
 }
 #newMusic{
     float: right;
