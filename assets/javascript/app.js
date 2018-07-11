@@ -20,7 +20,7 @@ $("#buttons").on("click", ".topics", function () {
     //need to empty it since I don't want to keep on adding to the div every time a user clicks a button with the topics class
     $("#gifs").empty();
     //set q to be value of whatever button is clicked which comes from the topics array
-    q = $(this).val();
+    q = $(this).val().trim();
     //query url is structured dynamically
     var queryURL = `https://api.giphy.com/v1/gifs/search?q=${q}&api_key=${apiKey}&limit=${gifLimit}`;
     //log query URL to see if the query string parameters were getting passed correctly.
