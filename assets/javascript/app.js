@@ -34,7 +34,7 @@ $("#buttons").on("click", ".topics", function () {
         //create a for loop to loop through the entire array of results and do something with the resulting data
         for (var i = 0; i < results.length; i++) {
             //create a div tag for each image with the title as an id and a class of gifContainer
-            var gifDiv = $(`<div id="${results[i].title}" class="gifContainer">`);
+            var gifDiv = $(`<div id="${results[i].title}" class="gifContainer" class="${i}">`);
             //put the title, published date, and rating in paragraph tag under each gif
             var p = $("<p>").html(`Title: ${results[i].title} <br> Published Date: ${results[i].import_datetime} <br> Rating: ${results[i].rating} `);
             //create a variable called gifImage to be the img tag and then below it add whatever attributes that I will need as hooks to make the images dynamic
