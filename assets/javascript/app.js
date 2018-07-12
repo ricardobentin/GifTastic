@@ -49,7 +49,17 @@ $("#buttons").on("click", ".topics", function () {
             gifImage.attr("data-still", results[i].images.fixed_height_still.url);
             gifDiv.append(gifImage);
             gifDiv.append(p);
-            gifDiv.append(`<a href='${gifImage.attr("src")}' download='${results[i].title}'>Save Gif</a>`);
+
+            var imgToDownload = fetch(`${results[i].images.fixed_height.url}`).then(function (response) {
+                return response.blob()
+            }).then(blob => {
+                console.log(blob);
+                var file = new File([blob], 'img.gif', { type: 'image/gif' });
+                console.log("this is the URL: " + URL.createObjectURL(file));
+                return URL.createObjectURL(file);
+
+            })
+            gifDiv.append(`<a download href='${imgToDownload}'>Save Gif</a>`);
             $("#gifs").prepend(gifDiv);
         }
         //click function to animate gifs
