@@ -57,9 +57,10 @@ $("#buttons").on("click", ".topics", function () {
                 var file = new File([blob], 'img.gif', { type: 'image/gif' });
                 console.log("this is the URL: " + URL.createObjectURL(file));
                 return URL.createObjectURL(file);
-
             })
-            gifDiv.append(`<a download href='${imgToDownload}'>Save Gif</a>`);
+            // var testing = Promise.resolve(imgToDownload.);
+            // console.log(testing);
+            gifDiv.append(`<a download href='${Promise.resolve(imgToDownload.PromiseValue)}'>Save Gif</a>`);
             $("#gifs").prepend(gifDiv);
         }
         //click function to animate gifs
