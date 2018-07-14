@@ -50,16 +50,6 @@ $("#buttons").on("click", ".topics", function () {
             gifDiv.append(gifImage);
             gifDiv.append(p);
             $("#gifs").prepend(gifDiv);
-            // var saveGif = $(`<a download>Save Gif</a>`);
-            // $(`"#item-${i}"`).append(saveGif);
-            // var imgToDownload = fetch(`${results[i].images.fixed_height.url}`).then(function (response) {
-            //     return response.blob()
-            // }).then(blob => {
-            //     console.log(blob);
-            //     var file = new File([blob], 'img.gif', { type: 'image/gif' });
-            //     console.log("this is the URL: " + URL.createObjectURL(file));
-            //     return URL.createObjectURL(file);
-            // }).then(results => { saveGif.attr("href", `${results}`) })
         }
         //click function to animate gifs
         $(".gif").on("click", function () {
