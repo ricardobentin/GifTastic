@@ -37,7 +37,7 @@ $("#buttons").on("click", ".topics", function () {
         //create a for loop to loop through the entire array of results and do something with the resulting data
         for (var i = 0; i < results.length; i++) {
             //create a div tag for each image with the title as an id and a class of gifContainer
-            var gifDiv = $(`<div id="${results[i].title}" class="gifContainer">`);
+            var gifDiv = $(`<div id="item-${i}" class="gifContainer" title="${results[i].title}">`);
             //put the title, published date, and rating in paragraph tag under each gif
             var p = $("<p>").html(`Title: ${results[i].title} <br> Published Date: ${results[i].import_datetime} <br> Rating: ${results[i].rating}`);
             //create a variable called gifImage to be the img tag and then below it add whatever attributes that I will need as hooks to make the images dynamic
@@ -50,17 +50,16 @@ $("#buttons").on("click", ".topics", function () {
             gifDiv.append(gifImage);
             gifDiv.append(p);
             $("#gifs").prepend(gifDiv);
-            var saveGif = $(`<a download>Save Gif</a>`);
-            gifDiv.append(saveGif);
-            var imgToDownload = fetch(`${results[i].images.fixed_height.url}`).then(function (response) {
-                return response.blob()
-            }).then(blob => {
-                console.log(blob);
-                var file = new File([blob], 'img.gif', { type: 'image/gif' });
-                console.log("this is the URL: " + URL.createObjectURL(file));
-                return URL.createObjectURL(file);
-            }).then(results => { saveGif.attr("href", `${results}`) })
-
+            // var saveGif = $(`<a download>Save Gif</a>`);
+            // $(`"#item-${i}"`).append(saveGif);
+            // var imgToDownload = fetch(`${results[i].images.fixed_height.url}`).then(function (response) {
+            //     return response.blob()
+            // }).then(blob => {
+            //     console.log(blob);
+            //     var file = new File([blob], 'img.gif', { type: 'image/gif' });
+            //     console.log("this is the URL: " + URL.createObjectURL(file));
+            //     return URL.createObjectURL(file);
+            // }).then(results => { saveGif.attr("href", `${results}`) })
         }
         //click function to animate gifs
         $(".gif").on("click", function () {
