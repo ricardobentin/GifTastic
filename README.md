@@ -6,4 +6,6 @@ You can use the textbox to enter in your favorite musical instrument, artist, so
 
 When you hit submit, your topic will appear as a button and once you click the button, you will see 10 gifs of the topic that you have selected from the giphy api.
 
+Link to project: http://ricardobentin.github.io/GiffyBand
+
 Happy Giffying!
